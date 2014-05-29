@@ -15,5 +15,3 @@ class UnixPS
     ps_output.collect { |line| UnixProcess.new(line) }
   end
 end
-
-puts UnixPS.processes.inspect

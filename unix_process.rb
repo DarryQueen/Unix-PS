@@ -3,13 +3,15 @@ require 'time'
 # Class that represents a unix process' basic information
 class UnixProcess 
 
+  attr_accessor :user, :pid, :cpu, :mem, :vsz, :rss, :tty, :stat, :start, :time, :command
+
   def initialize(line)
     # Split each line into fields by the delimiter
     fields = line.split(DELIMITER)
 
     # Assign the fields
     @user = fields[0]
-    @pid = fields[1]
+    @pid = fields[1].to_i
     @cpu = fields[2]
     @mem = fields[3]
     @vsz = fields[4]
@@ -21,47 +23,9 @@ class UnixProcess
     @command = fields[10]
   end
 
-  def user
-    @user
+  def kill!(sig=nil)
+    sig ||= 'INT'
+    Process.kill(sig, self.pid)
   end
 
-  def pid
-    @pid
-  end
-
-  def cpu
-    @cpu
-  end
-
-  def mem
-    @mem
-  end
-
-  def vsz
-    @vsz
-  end
-
-  def rss
-    @rss
-  end
-
-  def tty
-    @tty
-  end
-
-  def stat
-    @stat
-  end
-
-  def start
-    @start
-  end
-
-  def time
-    @time
-  end
-
-  def command
-    @command
-  end
 end
