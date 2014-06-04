@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Jason Parraga"]
   s.email       = ["Sovietaced@gmail.com"]
-  s.homepage    = "JasonParraga.com"
+  s.homepage    = "https://github.com/Sovietaced/unix-ps"
   s.summary     = %q{A Ruby wrapper around the unix tool ps.}
   s.description = %q{A Ruby wrapper around the unix tool ps.}
 
