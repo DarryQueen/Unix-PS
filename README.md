@@ -13,6 +13,7 @@ gem 'unix-ps'
 
 Usage
 =======
+Get a list of running processes
 ```ruby
 UnixPs.processes
 ```
