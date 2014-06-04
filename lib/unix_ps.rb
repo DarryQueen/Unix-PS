@@ -1,10 +1,9 @@
-require './unix_process'
+require './unix_ps/unix_process'
 
 # Subject to change, hopefully this does not cause issues
 DELIMITER = "!"
 
-class UnixPS
-
+module UnixPs
   def self.processes
     ps_output = `ps aux | awk '{print $1 "#{DELIMITER}" $2 "#{DELIMITER}" $3 "#{DELIMITER}" $4 "#{DELIMITER}" $5 "#{DELIMITER}" $6 "#{DELIMITER}" $7 "#{DELIMITER}" $8 "#{DELIMITER}" $9 "#{DELIMITER}" $10 "#{DELIMITER}" $11}'`.lines
 
