@@ -1,7 +1,7 @@
 unix-ps
 =======
 
-A Ruby wrapper around the unix tool ps
+A Ruby wrapper around the unix tool __ps__
 
 Getting started
 =======
