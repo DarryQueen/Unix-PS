@@ -8,7 +8,7 @@ module UnixPs
 
     def initialize(line)
       # Split each line into fields by the delimiter
-      fields = line.split(DELIMITER)
+      fields = line.split(UnixPs::DELIM)
 
       # Assign the fields
       @user = fields[0]
@@ -19,6 +19,7 @@ module UnixPs
       @rss = fields[5]
       @tty = fields[6]
       @stat = fields[7]
+      puts fields[8]
       @start = Time.parse(fields[8])
       @time = fields[9]
       @command = fields[10]
