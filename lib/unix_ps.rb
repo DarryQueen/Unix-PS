@@ -35,7 +35,7 @@ module UnixPs
     else
       lines = `#{file.path} | awk '{print #{@columns}}'`.lines
       command_columns = `#{file.path}| awk '{#{@command_column}}'`.lines
-
+      
       # Merge columns + command column
       lines = lines.each_with_index.map {|line, index|
         line = line.split(DELIM)

@@ -7,7 +7,6 @@ module UnixPs
     attr_accessor :user, :pid, :cpu, :mem, :vsz, :rss, :tty, :stat, :start, :time, :command
 
     def initialize(columns)
-
       # Assign the columns
       @user = columns[0]
       @pid = columns[1].to_i
