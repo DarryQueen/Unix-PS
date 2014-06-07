@@ -6,25 +6,23 @@ module UnixPs
 
     attr_accessor :user, :pid, :cpu, :mem, :vsz, :rss, :tty, :stat, :start, :time, :command
 
-    def initialize(line)
-      # Split each line into fields by the delimiter
-      fields = line.split(UnixPs::DELIM)
+    def initialize(columns)
 
-      # Assign the fields
-      @user = fields[0]
-      @pid = fields[1].to_i
-      @cpu = fields[2]
-      @mem = fields[3]
-      @vsz = fields[4]
-      @rss = fields[5]
-      @tty = fields[6]
-      @stat = fields[7]
-      puts fields[8]
-      @start = Time.parse(fields[8])
-      @time = fields[9]
-      @command = fields[10]
+      # Assign the columns
+      @user = columns[0]
+      @pid = columns[1].to_i
+      @cpu = columns[2].to_f
+      @mem = columns[3].to_f
+      @vsz = columns[4]
+      @rss = columns[5]
+      @tty = columns[6]
+      @stat = columns[7]
+      @start = Time.parse(columns[8])
+      @time = columns[9]
+      @command = columns[10]
     end
 
+    # Kill a process
     def kill!(sig=nil)
       sig ||= 'INT'
       Process.kill(sig, self.pid)
