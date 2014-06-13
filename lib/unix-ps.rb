@@ -1,5 +1,5 @@
 require 'tempfile'
-require './unix-ps/unix_process'
+require 'unix-ps/unix_process'
 module UnixPs
 
     # Subject to change, hopefully this does not cause issues
