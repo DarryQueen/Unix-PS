@@ -18,6 +18,7 @@ module UnixPs
     # losing consistency.
     file = Tempfile.new('unix-ps')
     file.write(ps_output)
+    file.close
 
     # Lines to create process objects from
     lines = nil
@@ -33,8 +34,8 @@ module UnixPs
         line.push(command)
       }
     else
-      lines = `#{file.path} | awk '{print #{@columns}}'`.lines
-      command_columns = `#{file.path}| awk '{#{@command_column}}'`.lines
+      lines = `cat #{file.path} | awk '{print #{@columns}}'`.lines
+      command_columns = `cat #{file.path}| awk '{#{@command_column}}'`.lines
       
       # Merge columns + command column
       lines = lines.each_with_index.map {|line, index|
@@ -43,6 +44,8 @@ module UnixPs
         line.push(command)
       }
     end
+
+    file.unlink
 
     # Pop off header columns
     lines.shift
