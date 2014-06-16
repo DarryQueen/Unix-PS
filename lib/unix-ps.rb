@@ -43,12 +43,12 @@ module UnixPs
         command = command_columns[index].strip
         line.push(command)
       }
+
+      # Pop off header columns
+      lines.shift
     end
 
     file.unlink
-
-    # Pop off header columns
-    lines.shift
 
     # Generate objects
     lines.collect { |line| UnixProcess.new(line) }
